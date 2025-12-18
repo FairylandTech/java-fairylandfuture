@@ -14,57 +14,57 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- Dependency Versioning -->
         <lombok.version>1.18.42</lombok.version>
         <jackson.annotations.version>2.19.4</jackson.annotations.version>
         <slf4j.api.version>2.0.17</slf4j.api.version>
         <logback.classic.version>1.5.21</logback.classic.version>
         <jjwt.version>0.13.0</jjwt.version>
-        <junit.version>5.10.2</junit.version>
+        <junit.jupiter.version>5.10.2</junit.jupiter.version>
     </properties>
 
     <dependencies>
-        <!-- Lombok: required at compile time, the provided scope means that the caller also needs to configure itself. -->
+        <!-- Lombok: Tool to reduce boilerplate code like getters and setters -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-            <scope>provided</scope>
         </dependency>
 
-        <!-- Jackson Annotations -->
+        <!-- Jackson Annotations: For JSON property naming and formatting -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.annotations.version}</version>
         </dependency>
 
-        <!-- Slf4j API -->
+        <!-- SLF4J API: Simple Logging Facade for Java -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.api.version}</version>
         </dependency>
 
-        <!-- Logback Classic -->
+        <!-- Logback Classic: Native SLF4J implementation for logging -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.classic.version}</version>
         </dependency>
 
-        <!-- JJWT Core Library -->
+        <!-- JJWT API: JSON Web Token support for Java -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
             <version>${jjwt.version}</version>
         </dependency>
+        <!-- JJWT Implementation: Required at runtime -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-impl</artifactId>
             <version>${jjwt.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <!-- JJWT Jackson: Serializer for JWT payloads -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-jackson</artifactId>
@@ -72,22 +72,22 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Testing dependencies -->
+        <!-- JUnit Jupiter: Testing framework for unit tests -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
+            <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Compile plug-ins: make sure to specify Java 17 -->
+            <!-- Compiler Plugin: Configures Java version and annotation processors -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
@@ -101,16 +101,25 @@
                 </configuration>
             </plugin>
 
-            <!-- Source code plugin: release the source code package at the same time when publishing, so that others can view it in the IDE -->
+            <!-- Assembly Plugin: Packages the application and its dependencies into a single JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.0</version>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <!-- Use "jar-with-dependencies" to create an executable fat JAR -->
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <!-- Ensures the fat JAR replaces the default one during install -->
+                    <appendAssemblyId>false</appendAssemblyId>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>attach-sources</id>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
                         <goals>
-                            <goal>jar-no-fork</goal>
+                            <goal>single</goal>
                         </goals>
                     </execution>
                 </executions>
