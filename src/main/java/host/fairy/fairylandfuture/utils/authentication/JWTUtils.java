@@ -34,7 +34,7 @@ public class JWTUtils {
      * @param claims    Claims
      * @return JWT Token
      */
-    public static String generateToken(String sercret, Long ttlSecond, Map<String, ?> claims) {
+    public static String generateToken(String sercret, Long ttlSecond, Map<String, String> claims) {
         
         long expiration = LocalDateTime.now().plusSeconds(ttlSecond).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
         

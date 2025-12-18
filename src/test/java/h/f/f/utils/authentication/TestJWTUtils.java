@@ -23,7 +23,7 @@ public class TestJWTUtils {
     
     @Test
     void testGenerateToken() {
-        Long ttlSecond = 3600L;
+        Long ttlSecond = 72000L;
         Map<String, String> claims = new HashMap<>() {
             {
                 put("id", "1");
@@ -36,7 +36,14 @@ public class TestJWTUtils {
     
     @Test
     void testParseToken() {
-        String token = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNzY2MDgzMTEyfQ.eePzCsr184_n1zg53JI8jm4aDzfA-l9YJ9OtZaerShE";
+        Long ttlSecond = 72000L;
+        Map<String, String> claimsMap = new HashMap<>() {
+            {
+                put("id", "1");
+                put("username", "admin");
+            }
+        };
+        String token = JWTUtils.generateToken(this.SECRET_KEY, ttlSecond, claimsMap);
         Claims claims = JWTUtils.parseToken(token, this.SECRET_KEY);
         String id = claims.get("id", String.class);
         String username = claims.get("username", String.class);
