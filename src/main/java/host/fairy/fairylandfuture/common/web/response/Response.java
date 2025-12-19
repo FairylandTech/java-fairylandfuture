@@ -3,21 +3,27 @@
  * @author: Lionel Johnson
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
- * @datetime: 2025-12-19 01:18:53 UTC+08:00
+ * @datetime: 2025-12-19 18:30:53 UTC+08:00
  ****************************************************/
-package host.fairy.fairylandfuture.http;
+package host.fairy.fairylandfuture.common.web.response;
 
 import host.fairy.fairylandfuture.enums.http.ResponseStatusEnum;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 /**
  * @author Lionel Johnson
  * @version 1.0
  */
 @Data
+@Builder
+@NoArgsConstructor
 @AllArgsConstructor
-public class Response<T> {
+public class Response<T> implements Serializable {
     
     private int code;
     private String message;
@@ -56,3 +62,4 @@ public class Response<T> {
         return new Response<>(code, message, data);
     }
 }
+
