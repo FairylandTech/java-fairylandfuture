@@ -37,20 +37,20 @@ public class TestJWTUtils {
     @Test
     void testParseToken() {
         Long ttlSecond = 72000L;
-        Map<String, String> claimsMap = new HashMap<>() {
+        Map<String, Object> claimsMap = new HashMap<>() {
             {
-                put("id", "1");
+                put("id", 1);
                 put("username", "admin");
             }
         };
         String token = JWTUtils.generateToken(this.SECRET_KEY, ttlSecond, claimsMap);
         Claims claims = JWTUtils.parseToken(token, this.SECRET_KEY);
-        String id = claims.get("id", String.class);
+        Integer id = claims.get("id", Integer.class);
         String username = claims.get("username", String.class);
         
         System.out.println("claims.getExpiration().toString() = " + claims.getExpiration().toString());
         
-        assert id.equals("1");
+        assert id.equals(1);
         assert username.equals("admin");
     }
     
