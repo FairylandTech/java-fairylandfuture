@@ -10,6 +10,9 @@ package h.f.f.utils.authentication;
 import host.fairy.fairylandfuture.utils.authentication.UserPasswordUtils;
 import org.junit.jupiter.api.Test;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+
 /**
  * @author Lionel Johnson
  * @version 1.0
@@ -17,16 +20,21 @@ import org.junit.jupiter.api.Test;
 public class TestUserPasswordUtils {
     @Test
     void testUserPassword() {
-        String password = "123456";
-        // 注册时: 生成盐值并计算哈希，然后将它们存入数据库
-        String salt = UserPasswordUtils.generateSalt();
-        System.out.println("salt = " + salt);
-        String hash = UserPasswordUtils.hashPassword(password.toCharArray(), UserPasswordUtils.SALT);
-        System.out.println("Salt(Base64): " + UserPasswordUtils.SALT);
-        System.out.println("Hash(Base64): " + hash);
         
-        // 登录时: 从数据库取出 salt 和 hash，再对用户输入的密码做同样运算并校验
-        boolean match = UserPasswordUtils.verifyPassword("123456".toCharArray(), hash, UserPasswordUtils.SALT);
+        System.out.println(Arrays.toString("我".getBytes(StandardCharsets.UTF_8)));
+        System.out.println(Arrays.toString("0".getBytes(StandardCharsets.UTF_8)));
+        
+        byte[] bytes = new byte[]{-26, -120, -111};
+        System.out.println(new String(bytes, StandardCharsets.UTF_8));
+        
+        String password = "123456";
+        
+        byte[] salt = UserPasswordUtils.generateSalt();
+        System.out.println("Salt(Base64): " + Arrays.toString(salt));
+        String encryptedPassword = UserPasswordUtils.hashPassword(password, salt);
+        System.out.println("HashPassword(MD5): " + encryptedPassword);
+        
+        boolean match = UserPasswordUtils.verifyPassword(password, encryptedPassword, salt);
         System.out.println("密码校验: " + (match ? "通过" : "失败"));
     }
 }

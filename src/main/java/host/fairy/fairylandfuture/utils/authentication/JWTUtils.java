@@ -26,10 +26,17 @@ import java.util.Map;
  */
 public class JWTUtils {
     
+    private JWTUtils() {
+    }
+    
     /**
-     * Generate JWT Token
+     * Generate JWT Token. <br/>
+     * Algorithm: HS256, when secret key bits length <= 256 bits. <br/>
+     * Algorithm: HS384, when secret key bits length <= 384 bits. <br/>
+     * Algorithm: HS512, when secret key bits length >= 512 bits. <br/>
+     * Calc bits length: bits = bytes length * 8
      *
-     * @param sercret   Secret key
+     * @param sercret   Secret key, should be at least 256 bits (32 bytes) for HS256
      * @param ttlSecond Token time to live in seconds
      * @param claims    Claims
      * @return JWT Token
