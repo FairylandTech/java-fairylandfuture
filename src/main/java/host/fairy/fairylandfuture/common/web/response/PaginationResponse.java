@@ -25,9 +25,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PaginationResponse<T> implements Serializable {
+public class PaginationResponse<E> implements Serializable {
     
-    private List<T> data;
+    private List<E> data;
     
     private int page;
     
