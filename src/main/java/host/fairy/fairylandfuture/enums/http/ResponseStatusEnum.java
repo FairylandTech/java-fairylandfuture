@@ -122,4 +122,3 @@ public enum ResponseStatusEnum {
         return CODE_MAP.getOrDefault(code, defaultStatus);
     }
 }
-

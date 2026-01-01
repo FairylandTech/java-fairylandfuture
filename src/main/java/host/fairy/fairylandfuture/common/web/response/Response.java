@@ -62,4 +62,3 @@ public class Response<T> implements Serializable {
         return new Response<>(code, message, data);
     }
 }
-
