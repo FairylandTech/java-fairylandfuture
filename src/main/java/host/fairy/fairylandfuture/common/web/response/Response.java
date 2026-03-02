@@ -7,7 +7,7 @@
  ****************************************************/
 package host.fairy.fairylandfuture.common.web.response;
 
-import host.fairy.fairylandfuture.enums.http.ResponseStatusEnum;
+import host.fairy.fairylandfuture.enums.ResponseStatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -5,7 +5,7 @@
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-12-19 01:23:15 UTC+08:00
  ****************************************************/
-package host.fairy.fairylandfuture.enums.http;
+package host.fairy.fairylandfuture.enums;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>host.fairy</groupId>
-    <artifactId>java-fairylandfuture</artifactId>
+    <artifactId>fairylandfuture</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
@@ -15,11 +15,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <lombok.version>1.18.42</lombok.version>
-        <jackson.annotations.version>2.12.7</jackson.annotations.version>
-        <slf4j.api.version>2.0.17</slf4j.api.version>
-        <logback.classic.version>1.5.21</logback.classic.version>
+        <jackson.version>2.19.4</jackson.version>
+        <slf4j.version>2.0.17</slf4j.version>
+        <logback.version>1.5.21</logback.version>
         <jjwt.version>0.13.0</jjwt.version>
-        <junit.jupiter.version>5.10.2</junit.jupiter.version>
+        <junit.version>5.10.2</junit.version>
+        <mybatis.version>3.5.19</mybatis.version>
     </properties>
 
     <dependencies>
@@ -34,21 +35,33 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>${jackson.annotations.version}</version>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!-- SLF4J API: Simple Logging Facade for Java -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.api.version}</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <!-- Logback Classic: Native SLF4J implementation for logging -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback.classic.version}</version>
+            <version>${logback.version}</version>
         </dependency>
 
         <!-- JJWT API: JSON Web Token support for Java -->
@@ -57,6 +70,7 @@
             <artifactId>jjwt-api</artifactId>
             <version>${jjwt.version}</version>
         </dependency>
+        
         <!-- JJWT Implementation: Required at runtime -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -64,6 +78,7 @@
             <version>${jjwt.version}</version>
             <scope>runtime</scope>
         </dependency>
+        
         <!-- JJWT Jackson: Serializer for JWT payloads -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -72,11 +87,17 @@
             <scope>runtime</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+
         <!-- JUnit Jupiter: Testing framework for unit tests -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.jupiter.version}</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

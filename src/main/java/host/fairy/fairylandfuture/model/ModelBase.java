@@ -8,9 +8,13 @@
 package host.fairy.fairylandfuture.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import host.fairy.fairylandfuture.enums.EnabledStatusEnum;
+import host.fairy.fairylandfuture.serializer.EnabledStatusEnumSerializer;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -20,8 +24,9 @@ import java.time.LocalDateTime;
  * @version 1.0
  */
 @Data
-@ToString
-@EqualsAndHashCode
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ModelBase implements Serializable {
     
     private Long id;
@@ -32,5 +37,6 @@ public class ModelBase implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime updatedAt;
     
-    private boolean deleted;
+    @JsonSerialize(using = EnabledStatusEnumSerializer.class)
+    private EnabledStatusEnum enabled;
 }
