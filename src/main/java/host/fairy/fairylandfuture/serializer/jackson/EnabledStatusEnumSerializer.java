@@ -5,7 +5,7 @@
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2026-03-02 22:12:57 UTC+08:00
  ****************************************************/
-package host.fairy.fairylandfuture.serializer;
+package host.fairy.fairylandfuture.serializer.jackson;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

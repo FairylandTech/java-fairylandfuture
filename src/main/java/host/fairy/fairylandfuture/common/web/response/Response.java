@@ -7,11 +7,11 @@
  ****************************************************/
 package host.fairy.fairylandfuture.common.web.response;
 
-import host.fairy.fairylandfuture.enums.ResponseStatusEnum;
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import host.fairy.fairylandfuture.enums.ResponseCodeEnum;
+import host.fairy.fairylandfuture.serializer.jackson.ResponseCodeEnumSerializer;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -21,44 +21,69 @@ import java.io.Serializable;
  */
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Response<T> implements Serializable {
     
-    private int code;
+    @JsonSerialize(using = ResponseCodeEnumSerializer.class)
+    private ResponseCodeEnum code;
     private String message;
     private T data;
     
-    public static Response<Void> success() {
-        return new Response<>(ResponseStatusEnum.SUCCESS.getCode(), ResponseStatusEnum.SUCCESS.getMessage(), null);
+    public static <T> Response<T> success() {
+        return Response.<T>builder()
+                .code(ResponseCodeEnum.SUCCESS)
+                .message(ResponseCodeEnum.SUCCESS.getDescription())
+                .build();
     }
     
-    public static <T> Response<T> success(int code) {
-        ResponseStatusEnum status = ResponseStatusEnum.findByCodeOrDefault(code, ResponseStatusEnum.SUCCESS);
-        return new Response<>(status.getCode(), status.getMessage(), null);
+    public static <T> Response<T> success(ResponseCodeEnum code) {
+        return Response.<T>builder()
+                .code(code)
+                .message(code.getDescription())
+                .build();
+    }
+    
+    public static <T> Response<T> success(ResponseCodeEnum code, String message) {
+        return Response.<T>builder()
+                .code(code)
+                .message(message)
+                .build();
     }
     
     public static <T> Response<T> success(T data) {
-        return new Response<>(ResponseStatusEnum.SUCCESS.getCode(), ResponseStatusEnum.SUCCESS.getMessage(), data);
+        return Response.<T>builder()
+                .code(ResponseCodeEnum.SUCCESS)
+                .message(ResponseCodeEnum.SUCCESS.getDescription())
+                .data(data)
+                .build();
     }
     
-    public static <T> Response<T> success(String message, T data) {
-        return new Response<>(ResponseStatusEnum.SUCCESS.getCode(), message, data);
+    public static <T> Response<T> success(ResponseCodeEnum code, String message, T data) {
+        return Response.<T>builder()
+                .code(code)
+                .message(message)
+                .data(data)
+                .build();
     }
     
-    public static <T> Response<T> success(int code, String message, T data) {
-        return new Response<>(code, message, data);
+    public static <T> Response<T> failure(String message) {
+        return Response.<T>builder()
+                .code(ResponseCodeEnum.ERROR)
+                .message(message)
+                .build();
     }
     
-    public static Response<Void> failure(String message) {
-        return new Response<>(ResponseStatusEnum.ERROR.getCode(), message, null);
+    public static <T> Response<T> failure(ResponseCodeEnum code, String message) {
+        return Response.<T>builder()
+                .code(code)
+                .message(message)
+                .build();
     }
     
-    public static Response<Void> failure(int code, String message) {
-        return new Response<>(code, message, null);
-    }
-    
-    public static <T> Response<T> failure(int code, String message, T data) {
-        return new Response<>(code, message, data);
+    public static <T> Response<T> failure(ResponseCodeEnum code, String message, T data) {
+        return Response.<T>builder()
+                .code(code)
+                .message(message)
+                .data(data)
+                .build();
     }
 }

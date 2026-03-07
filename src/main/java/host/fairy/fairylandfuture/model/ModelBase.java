@@ -10,7 +10,7 @@ package host.fairy.fairylandfuture.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import host.fairy.fairylandfuture.enums.EnabledStatusEnum;
-import host.fairy.fairylandfuture.serializer.EnabledStatusEnumSerializer;
+import host.fairy.fairylandfuture.serializer.jackson.EnabledStatusEnumSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

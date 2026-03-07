@@ -7,8 +7,8 @@
  ****************************************************/
 package host.fairy.fairylandfuture.enums;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,9 +17,9 @@ import java.util.Map;
  * @author Lionel Johnson
  * @version 1.0
  */
-@Slf4j
 @Getter
-public enum ResponseStatusEnum {
+@AllArgsConstructor
+public enum ResponseCodeEnum {
     SUCCESS(200, "Success"),
     ERROR(500, "Error"),
     NOT_FOUND(404, "Not Found"),
@@ -94,31 +94,18 @@ public enum ResponseStatusEnum {
     NETWORK_AUTHENTICATION_REQUIRED(511, "Network Authentication Required");
     
     
-    private static final Map<Integer, ResponseStatusEnum> CODE_MAP = new HashMap<>();
+    private static final Map<Integer, ResponseCodeEnum> CODE_MAP = new HashMap<>();
     
     static {
-        for (ResponseStatusEnum status : values()) {
+        for (ResponseCodeEnum status : values()) {
             CODE_MAP.put(status.code, status);
         }
     }
     
     private final int code;
-    private final String message;
+    private final String description;
     
-    ResponseStatusEnum(int code, String message) {
-        this.code = code;
-        this.message = message;
-    }
-    
-    public static ResponseStatusEnum findByCode(int code) {
-        ResponseStatusEnum status = CODE_MAP.get(code);
-        if (status == null) {
-            throw new IllegalArgumentException("Invalid ResponseStatusEnum code: " + code);
-        }
-        return status;
-    }
-    
-    public static ResponseStatusEnum findByCodeOrDefault(int code, ResponseStatusEnum defaultStatus) {
-        return CODE_MAP.getOrDefault(code, defaultStatus);
+    public static ResponseCodeEnum fromCode(int code) {
+        return CODE_MAP.getOrDefault(code, null);
     }
 }

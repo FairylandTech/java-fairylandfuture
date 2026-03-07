@@ -29,11 +29,11 @@ public class PaginationResponse<E> implements Serializable {
     
     private List<E> data;
     
-    private int page;
+    private Integer page;
     
-    private int size;
+    private Integer size;
     
-    private long total;
+    private Long total;
     
-    private int totalPages;
+    private Integer totalPages;
 }
