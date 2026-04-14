@@ -12,9 +12,9 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import host.fairy.fairylandfuture.enums.EnabledStatusEnum;
 import host.fairy.fairylandfuture.serializer.jackson.EnabledStatusEnumSerializer;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
  * @version 1.0
  */
 @Data
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ModelBase implements Serializable {
