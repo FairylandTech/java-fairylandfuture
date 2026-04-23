@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-12-20 03:52:32 UTC+08:00
@@ -12,7 +12,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 public class MD5Utils {

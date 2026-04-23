@@ -1,13 +1,13 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2026-03-02 21:10:05 UTC+08:00
  ****************************************************/
 package host.fairy.fairylandfuture.ibatis.type.handler;
 
-import host.fairy.fairylandfuture.enums.EnabledStatusEnum;
+import host.fairy.fairylandfuture.enums.EnabledEnum;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedJdbcTypes;
@@ -19,33 +19,33 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
-@MappedTypes(EnabledStatusEnum.class)
+@MappedTypes(EnabledEnum.class)
 @MappedJdbcTypes(JdbcType.CHAR)
-public class EnabledStatusEnumTypeHandler extends BaseTypeHandler<EnabledStatusEnum> {
+public class EnabledEnumTypeHandler extends BaseTypeHandler<EnabledEnum> {
     
     @Override
-    public void setNonNullParameter(PreparedStatement ps, int i, EnabledStatusEnum parameter, JdbcType jdbcType) throws SQLException {
+    public void setNonNullParameter(PreparedStatement ps, int i, EnabledEnum parameter, JdbcType jdbcType) throws SQLException {
         ps.setString(i, parameter.getValue());
     }
     
     @Override
-    public EnabledStatusEnum getNullableResult(ResultSet rs, String columnName) throws SQLException {
+    public EnabledEnum getNullableResult(ResultSet rs, String columnName) throws SQLException {
         String value = rs.getString(columnName);
-        return value == null ? null : EnabledStatusEnum.fromValue(value);
+        return value == null ? null : EnabledEnum.fromValue(value);
     }
     
     @Override
-    public EnabledStatusEnum getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
+    public EnabledEnum getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
         String value = rs.getString(columnIndex);
-        return value == null ? null : EnabledStatusEnum.fromValue(value);
+        return value == null ? null : EnabledEnum.fromValue(value);
     }
     
     @Override
-    public EnabledStatusEnum getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
+    public EnabledEnum getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
         String value = cs.getString(columnIndex);
-        return value == null ? null : EnabledStatusEnum.fromValue(value);
+        return value == null ? null : EnabledEnum.fromValue(value);
     }
 }

@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-12-19 01:28:36 UTC+08:00
@@ -21,7 +21,7 @@ import java.util.Map;
 /**
  * JWT Utils
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 public class JWTUtils {

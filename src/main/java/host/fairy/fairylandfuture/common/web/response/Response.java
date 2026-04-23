@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-12-19 18:30:53 UTC+08:00
@@ -16,7 +16,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 @Data

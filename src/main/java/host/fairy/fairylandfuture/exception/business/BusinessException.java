@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-12-19 02:53:00 UTC+08:00
@@ -12,7 +12,7 @@ import host.fairy.fairylandfuture.exception.BaseRuntimeException;
 /**
  * Business logic exception
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 public class BusinessException extends BaseRuntimeException {

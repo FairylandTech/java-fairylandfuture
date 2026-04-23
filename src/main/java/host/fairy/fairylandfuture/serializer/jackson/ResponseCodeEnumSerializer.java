@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2026-03-07 13:55:50 UTC+08:00
@@ -15,7 +15,7 @@ import host.fairy.fairylandfuture.enums.ResponseCodeEnum;
 import java.io.IOException;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 public class ResponseCodeEnumSerializer extends JsonSerializer<ResponseCodeEnum> {

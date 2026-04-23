@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-12-19 01:26:11 UTC+08:00
@@ -9,8 +9,8 @@ package host.fairy.fairylandfuture.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import host.fairy.fairylandfuture.enums.EnabledStatusEnum;
-import host.fairy.fairylandfuture.serializer.jackson.EnabledStatusEnumSerializer;
+import host.fairy.fairylandfuture.enums.EnabledEnum;
+import host.fairy.fairylandfuture.serializer.jackson.EnabledEnumSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +20,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 @Data
@@ -37,6 +37,6 @@ public class ModelBase implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime updatedAt;
     
-    @JsonSerialize(using = EnabledStatusEnumSerializer.class)
-    private EnabledStatusEnum enabled;
+    @JsonSerialize(using = EnabledEnumSerializer.class)
+    private EnabledEnum enabled;
 }
