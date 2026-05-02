@@ -16,6 +16,10 @@ import host.fairy.fairylandfuture.exception.BaseRuntimeException;
  * @version 1.0
  */
 public class AuthenticationException extends BaseRuntimeException {
+    public AuthenticationException() {
+        super("Authentication failed");
+    }
+    
     public AuthenticationException(String message) {
         super(message);
     }

@@ -14,10 +14,14 @@ package host.fairy.fairylandfuture.exception;
  * @version 1.0
  */
 public class BaseRuntimeException extends RuntimeException {
+    public BaseRuntimeException() {
+        super("An error occurred");
+    }
+    
     public BaseRuntimeException(String message) {
         super(message);
     }
-
+    
     public BaseRuntimeException(String message, Throwable cause) {
         super(message, cause);
     }

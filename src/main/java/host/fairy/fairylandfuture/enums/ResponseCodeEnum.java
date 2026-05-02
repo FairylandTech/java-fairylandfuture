@@ -103,7 +103,7 @@ public enum ResponseCodeEnum {
     }
     
     private final int code;
-    private final String description;
+    private final String name;
     
     public static ResponseCodeEnum fromCode(int code) {
         return CODE_MAP.getOrDefault(code, null);

@@ -20,17 +20,19 @@ import java.util.Map;
 @Getter
 @AllArgsConstructor
 public enum GenderEnum {
-    FEMALE(0, "female", "女"),
-    MALE(1, "male", "男"),
-    UNKNOWN(2, "unknown", "未知");
+    FEMALE(0, "FEMALE", "女"),
+    MALE(1, "MALE", "男"),
+    UNKNOWN(2, "UNKNOWN", "未知");
     
     private static final Map<String, GenderEnum> NAME_MAP = new HashMap<>();
     private static final Map<Integer, GenderEnum> CODE_MAP = new HashMap<>();
+    private static final Map<String, GenderEnum> DESCRIPTION_MAP = new HashMap<>();
     
     static {
         for (GenderEnum gender : values()) {
             NAME_MAP.put(gender.getName(), gender);
             CODE_MAP.put(gender.getCode(), gender);
+            DESCRIPTION_MAP.put(gender.getDescription(), gender);
         }
     }
     
@@ -39,10 +41,14 @@ public enum GenderEnum {
     private final String description;
     
     public static GenderEnum fromCode(int code) {
-        return CODE_MAP.getOrDefault(code, UNKNOWN);
+        return CODE_MAP.getOrDefault(code, null);
     }
     
     public static GenderEnum fromName(String name) {
-        return NAME_MAP.getOrDefault(name, UNKNOWN);
+        return NAME_MAP.getOrDefault(name, null);
+    }
+    
+    public static GenderEnum fromDescription(String description) {
+        return DESCRIPTION_MAP.getOrDefault(description, null);
     }
 }

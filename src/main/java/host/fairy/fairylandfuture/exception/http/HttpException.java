@@ -16,6 +16,10 @@ import host.fairy.fairylandfuture.exception.BaseRuntimeException;
  * @version 1.0
  */
 public class HttpException extends BaseRuntimeException {
+    public HttpException() {
+        super("HTTP error");
+    }
+    
     public HttpException(String message) {
         super(message);
     }

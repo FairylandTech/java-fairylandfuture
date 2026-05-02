@@ -31,14 +31,14 @@ public class Response<T> implements Serializable {
     public static <T> Response<T> success() {
         return Response.<T>builder()
                 .code(ResponseCodeEnum.SUCCESS)
-                .message(ResponseCodeEnum.SUCCESS.getDescription())
+                .message(ResponseCodeEnum.SUCCESS.getName())
                 .build();
     }
     
     public static <T> Response<T> success(ResponseCodeEnum code) {
         return Response.<T>builder()
                 .code(code)
-                .message(code.getDescription())
+                .message(code.getName())
                 .build();
     }
     
@@ -52,7 +52,7 @@ public class Response<T> implements Serializable {
     public static <T> Response<T> success(T data) {
         return Response.<T>builder()
                 .code(ResponseCodeEnum.SUCCESS)
-                .message(ResponseCodeEnum.SUCCESS.getDescription())
+                .message(ResponseCodeEnum.SUCCESS.getName())
                 .data(data)
                 .build();
     }

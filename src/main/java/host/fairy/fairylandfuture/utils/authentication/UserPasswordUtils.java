@@ -7,6 +7,7 @@
  ****************************************************/
 package host.fairy.fairylandfuture.utils.authentication;
 
+import host.fairy.fairylandfuture.exception.common.ParameterException;
 import host.fairy.fairylandfuture.utils.encryption.MD5Utils;
 
 import javax.crypto.SecretKeyFactory;
@@ -15,7 +16,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Base64;
-import java.util.Objects;
 
 /**
  * @author Beau Dean
@@ -56,8 +56,9 @@ public class UserPasswordUtils {
      * @return Base64 Encoded hash results
      */
     public static String hashPassword(String password, byte[] salt) {
-        Objects.requireNonNull(password, "Password cannot be null");
-        Objects.requireNonNull(salt, "Salt cannot be null");
+        if (password == null || password.isEmpty()) {
+            throw new ParameterException("Password cannot be null or empty");
+        }
         
         try {
             PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), salt, ITERATIONS, KEY_LENGTH);
@@ -78,7 +79,6 @@ public class UserPasswordUtils {
      * @return Match returns true, otherwise false
      */
     public static boolean verifyPassword(String srcPassword, String targetPassword, byte[] salt) {
-        String newHash = hashPassword(srcPassword, salt);
-        return newHash.equals(targetPassword);
+        return hashPassword(srcPassword, salt).equals(targetPassword);
     }
 }

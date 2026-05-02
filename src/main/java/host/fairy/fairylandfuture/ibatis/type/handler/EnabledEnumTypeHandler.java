@@ -28,24 +28,21 @@ public class EnabledEnumTypeHandler extends BaseTypeHandler<EnabledEnum> {
     
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, EnabledEnum parameter, JdbcType jdbcType) throws SQLException {
-        ps.setString(i, parameter.getValue());
+        ps.setString(i, parameter.getName());
     }
     
     @Override
     public EnabledEnum getNullableResult(ResultSet rs, String columnName) throws SQLException {
-        String value = rs.getString(columnName);
-        return value == null ? null : EnabledEnum.fromValue(value);
+        return EnabledEnum.fromName(rs.getString(columnName));
     }
     
     @Override
     public EnabledEnum getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
-        String value = rs.getString(columnIndex);
-        return value == null ? null : EnabledEnum.fromValue(value);
+        return EnabledEnum.fromName(rs.getString(columnIndex));
     }
     
     @Override
     public EnabledEnum getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
-        String value = cs.getString(columnIndex);
-        return value == null ? null : EnabledEnum.fromValue(value);
+        return EnabledEnum.fromName(cs.getString(columnIndex));
     }
 }

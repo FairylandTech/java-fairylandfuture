@@ -24,27 +24,27 @@ public enum EnabledEnum {
     DISABLED(0, "N", "禁用");
     
     private static final Map<Integer, EnabledEnum> CODE_MAP = new HashMap<>();
-    private static final Map<String, EnabledEnum> VALUE_MAP = new HashMap<>();
+    private static final Map<String, EnabledEnum> NAME_MAP = new HashMap<>();
     private static final Map<String, EnabledEnum> DESCRIPTION_MAP = new HashMap<>();
     
     static {
         for (EnabledEnum enabledStatus : values()) {
             CODE_MAP.put(enabledStatus.getCode(), enabledStatus);
-            VALUE_MAP.put(enabledStatus.getValue(), enabledStatus);
+            NAME_MAP.put(enabledStatus.getName(), enabledStatus);
             DESCRIPTION_MAP.put(enabledStatus.getDescription(), enabledStatus);
         }
     }
     
     private final int code;
-    private final String value;
+    private final String name;
     private final String description;
     
     public static EnabledEnum fromCode(int code) {
         return CODE_MAP.getOrDefault(code, null);
     }
     
-    public static EnabledEnum fromValue(String value) {
-        return VALUE_MAP.getOrDefault(value, null);
+    public static EnabledEnum fromName(String value) {
+        return NAME_MAP.getOrDefault(value, null);
     }
     
     public static EnabledEnum fromDescription(String description) {

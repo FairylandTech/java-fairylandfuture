@@ -16,6 +16,10 @@ import host.fairy.fairylandfuture.exception.BaseRuntimeException;
  * @version 1.0
  */
 public class AuthorizationException extends BaseRuntimeException {
+    public AuthorizationException() {
+        super("Unauthorized");
+    }
+    
     public AuthorizationException(String message) {
         super(message);
     }

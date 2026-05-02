@@ -7,6 +7,8 @@
  ****************************************************/
 package host.fairy.fairylandfuture.utils.encryption;
 
+import host.fairy.fairylandfuture.exception.common.ParameterException;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -20,6 +22,10 @@ public class MD5Utils {
     }
     
     public static String md5HEX(String string) {
+        if (string == null || string.isEmpty()) {
+            throw new ParameterException();
+        }
+        
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             byte[] bytes = md5.digest(string.getBytes(StandardCharsets.UTF_8));

@@ -16,6 +16,10 @@ import host.fairy.fairylandfuture.exception.BaseRuntimeException;
  * @version 1.0
  */
 public class BusinessException extends BaseRuntimeException {
+    public BusinessException() {
+        super("Business logic error");
+    }
+    
     public BusinessException(String message) {
         super(message);
     }

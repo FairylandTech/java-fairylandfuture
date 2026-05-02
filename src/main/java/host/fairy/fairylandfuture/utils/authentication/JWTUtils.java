@@ -7,6 +7,7 @@
  ****************************************************/
 package host.fairy.fairylandfuture.utils.authentication;
 
+import host.fairy.fairylandfuture.exception.common.ParameterException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -36,18 +37,21 @@ public class JWTUtils {
      * Algorithm: HS512, when secret key bits length >= 512 bits. <br/>
      * Calc bits length: bits = bytes length * 8
      *
-     * @param sercret   Secret key, should be at least 256 bits (32 bytes) for HS256
+     * @param secret    Secret key, should be at least 256 bits (32 bytes) for HS256
      * @param ttlSecond Token time to live in seconds
      * @param claims    Claims
      * @return JWT Token
      */
-    public static String generateToken(String sercret, Long ttlSecond, Map<String, ?> claims) {
+    public static String generateToken(String secret, Long ttlSecond, Map<String, ?> claims) {
+        if (secret == null || secret.isEmpty()) {
+            throw new ParameterException("Secret Key connot be null or empty");
+        }
         
         long expiration = LocalDateTime.now().plusSeconds(ttlSecond).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
         
         JwtBuilder jwtBuilder = Jwts.builder()
                 .claims(claims)
-                .signWith(Keys.hmacShaKeyFor(sercret.getBytes(StandardCharsets.UTF_8)))
+                .signWith(Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8)))
                 .expiration(new Date(expiration));
         
         return jwtBuilder.compact();
@@ -61,6 +65,10 @@ public class JWTUtils {
      * @return Claims
      */
     public static Claims parseToken(String token, String secret) {
+        if (secret == null || secret.isEmpty()) {
+            throw new ParameterException("Secret Key connot be null or empty");
+        }
+        
         return Jwts.parser()
                 .verifyWith(Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8)))
                 .build()

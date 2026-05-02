@@ -16,10 +16,14 @@ import host.fairy.fairylandfuture.exception.BaseRuntimeException;
  * @version 1.0
  */
 public class ResourceNotFoundException extends BaseRuntimeException {
+    public ResourceNotFoundException() {
+        super("Resource not found");
+    }
+    
     public ResourceNotFoundException(String message) {
         super(message);
     }
-
+    
     public ResourceNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }

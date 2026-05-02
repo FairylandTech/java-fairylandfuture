@@ -16,10 +16,14 @@ import host.fairy.fairylandfuture.exception.BaseRuntimeException;
  * @version 1.0
  */
 public class ParameterException extends BaseRuntimeException {
+    public ParameterException() {
+        super("Invalid parameter");
+    }
+    
     public ParameterException(String message) {
         super(message);
     }
-
+    
     public ParameterException(String message, Throwable cause) {
         super(message, cause);
     }

@@ -16,10 +16,14 @@ import host.fairy.fairylandfuture.exception.BaseRuntimeException;
  * @version 1.0
  */
 public class ValidationException extends BaseRuntimeException {
+    public ValidationException() {
+        super("Data validation failed");
+    }
+    
     public ValidationException(String message) {
         super(message);
     }
-
+    
     public ValidationException(String message, Throwable cause) {
         super(message, cause);
     }

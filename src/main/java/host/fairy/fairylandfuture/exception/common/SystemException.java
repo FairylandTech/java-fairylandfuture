@@ -16,10 +16,14 @@ import host.fairy.fairylandfuture.exception.BaseRuntimeException;
  * @version 1.0
  */
 public class SystemException extends BaseRuntimeException {
+    public SystemException() {
+        super("System error");
+    }
+    
     public SystemException(String message) {
         super(message);
     }
-
+    
     public SystemException(String message, Throwable cause) {
         super(message, cause);
     }
