@@ -6,7 +6,7 @@
 
     <groupId>host.fairy</groupId>
     <artifactId>fairylandfuture</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -21,6 +21,7 @@
         <jjwt.version>0.13.0</jjwt.version>
         <junit.version>5.10.2</junit.version>
         <mybatis.version>3.5.19</mybatis.version>
+        <mybatisplus.version>3.5.15</mybatisplus.version>
     </properties>
 
     <dependencies>
@@ -70,7 +71,7 @@
             <artifactId>jjwt-api</artifactId>
             <version>${jjwt.version}</version>
         </dependency>
-        
+
         <!-- JJWT Implementation: Required at runtime -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -78,7 +79,7 @@
             <version>${jjwt.version}</version>
             <scope>runtime</scope>
         </dependency>
-        
+
         <!-- JJWT Jackson: Serializer for JWT payloads -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -91,6 +92,12 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>${mybatis.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatisplus.version}</version>
         </dependency>
 
         <!-- JUnit Jupiter: Testing framework for unit tests -->
@@ -120,30 +127,6 @@
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
-            </plugin>
-
-            <!-- Assembly Plugin: Packages the application and its dependencies into a single JAR -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.6.0</version>
-                <configuration>
-                    <!-- Use "jar-with-dependencies" to create an executable fat JAR -->
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                    <!-- Ensures the fat JAR replaces the default one during install -->
-                    <appendAssemblyId>false</appendAssemblyId>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

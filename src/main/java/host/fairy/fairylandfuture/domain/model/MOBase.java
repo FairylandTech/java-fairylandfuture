@@ -3,20 +3,18 @@
  * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
- * @datetime: 2025-12-19 01:26:11 UTC+08:00
+ * @datetime: 2026-05-04 20:33:35 UTC+08:00
  ****************************************************/
-package host.fairy.fairylandfuture.model;
+package host.fairy.fairylandfuture.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.baomidou.mybatisplus.annotation.*;
 import host.fairy.fairylandfuture.enums.EnabledEnum;
-import host.fairy.fairylandfuture.serializer.jackson.EnabledEnumSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -27,16 +25,19 @@ import java.time.LocalDateTime;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ModelBase implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+public class MOBase extends DomainBase {
     
+    @TableId(type = IdType.AUTO)
     private Long id;
     
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createdAt;
     
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updatedAt;
     
-    @JsonSerialize(using = EnabledEnumSerializer.class)
+    @TableLogic
     private EnabledEnum enabled;
+    
 }

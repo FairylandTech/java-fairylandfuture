@@ -16,3 +16,31 @@ Development Environment
 [![DEV](https://img.shields.io/badge/Env-Win/Mac/Linux-%230078D4?logo=windows11&logoColor=%230078D4)]() [![VCS](https://img.shields.io/badge/VCS-GitHub-%23181717?logo=github&logoColor=%23181717)](https://github.com/FairylandTech) [![Anaconda](https://img.shields.io/badge/Anaconda-latest-%2344A833?logo=anaconda&logoColor=%2344A833)](https://www.anaconda.com/download#downloads) [![Python](https://img.shields.io/badge/Python-3.11.x-%233776AB?logo=python&logoColor=%233776AB)](https://www.python.org/downloads/release/python-3913/) [![Pip](https://img.shields.io/badge/PIP-24.x.x-%233775A9?logo=pypi&logoColor=%233775A9)](https://pypi.org/) ![MySQL](https://img.shields.io/badge/MySQL-8.0.35-%234479A1?logo=mysql&logoColor=%234479A1) [![GO](https://img.shields.io/badge/Go-1.20.6-%2300ADD8?logo=go&logoColor=%2300ADD8)](https://go.dev/dl/) ![NodeJS](https://img.shields.io/badge/Node-18.19-%23339933?logo=nodedotjs&logoColor=%23339933) ![Npm](https://img.shields.io/badge/Npm-10.x.x-%23CB3837?logo=npm&logoColor=%23CB3837) ![Pnpm](https://img.shields.io/badge/Pnpm-8.7.6-%23F69220?logo=pnpm&logoColor=%23F69220) ![Yarn](https://img.shields.io/badge/Yarn-1.22.19-%232C8EBB?logo=yarn&logoColor=%232C8EBB) ![Maven](https://img.shields.io/badge/Maven-3.9.1-%23C71A36?logo=apachemaven&logoColor=%23C71A36) ![Perl](https://img.shields.io/badge/Perl-8.3.0-%2339457E?logo=perl&logoColor=%2339457E) [![jetbrains](https://img.shields.io/badge/Jetbrains_IDE-Release-%2347f38a?logo=jetbrains&logoColor=%2347f38a)](https://www.jetbrains.com/) [![Deployment](https://img.shields.io/badge/Deployment-Docker-%232496ED?logo=docker&logoColor=%232496ED)](https://www.docker.com/) [![Deployment](https://img.shields.io/badge/Deployment-Kubernetes-%23326CE5?logo=kubernetes&logoColor=%23326CE5)](https://kubernetes.io/)
 
 ---
+
+with dependence
+
+``xml
+<!-- Assembly Plugin: Packages the application and its dependencies into a single JAR -->
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <version>3.6.0</version>
+    <configuration>
+        <!-- Use "jar-with-dependencies" to create an executable fat JAR -->
+        <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+        <!-- Ensures the fat JAR replaces the default one during install -->
+        <appendAssemblyId>false</appendAssemblyId>
+    </configuration>
+    <executions>
+        <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+                <goal>single</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+``
