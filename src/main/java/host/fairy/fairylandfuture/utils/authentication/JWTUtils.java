@@ -7,7 +7,7 @@
  ****************************************************/
 package host.fairy.fairylandfuture.utils.authentication;
 
-import host.fairy.fairylandfuture.exception.common.ParameterException;
+import host.fairy.fairylandfuture.exception.common.ParameterExceptionBase;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -44,7 +44,7 @@ public class JWTUtils {
      */
     public static String generateToken(String secret, Long ttlSecond, Map<String, ?> claims) {
         if (secret == null || secret.isEmpty()) {
-            throw new ParameterException("Secret Key connot be null or empty");
+            throw new ParameterExceptionBase("Secret Key connot be null or empty");
         }
         
         long expiration = LocalDateTime.now().plusSeconds(ttlSecond).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
@@ -66,7 +66,7 @@ public class JWTUtils {
      */
     public static Claims parseToken(String token, String secret) {
         if (secret == null || secret.isEmpty()) {
-            throw new ParameterException("Secret Key connot be null or empty");
+            throw new ParameterExceptionBase("Secret Key connot be null or empty");
         }
         
         return Jwts.parser()

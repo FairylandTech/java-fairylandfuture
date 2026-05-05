@@ -7,7 +7,7 @@
  ****************************************************/
 package host.fairy.fairylandfuture.exception.business;
 
-import host.fairy.fairylandfuture.exception.BaseRuntimeException;
+import host.fairy.fairylandfuture.exception.RuntimeExceptionBase;
 
 /**
  * Business logic exception
@@ -15,16 +15,16 @@ import host.fairy.fairylandfuture.exception.BaseRuntimeException;
  * @author Beau Dean
  * @version 1.0
  */
-public class BusinessException extends BaseRuntimeException {
-    public BusinessException() {
+public class BusinessExceptionBase extends RuntimeExceptionBase {
+    public BusinessExceptionBase() {
         super("Business logic error");
     }
     
-    public BusinessException(String message) {
+    public BusinessExceptionBase(String message) {
         super(message);
     }
 
-    public BusinessException(String message, Throwable cause) {
+    public BusinessExceptionBase(String message, Throwable cause) {
         super(message, cause);
     }
 }

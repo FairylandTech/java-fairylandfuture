@@ -7,7 +7,7 @@
  ****************************************************/
 package host.fairy.fairylandfuture.exception.common;
 
-import host.fairy.fairylandfuture.exception.BaseRuntimeException;
+import host.fairy.fairylandfuture.exception.RuntimeExceptionBase;
 
 /**
  * Data validation exception
@@ -15,16 +15,16 @@ import host.fairy.fairylandfuture.exception.BaseRuntimeException;
  * @author Beau Dean
  * @version 1.0
  */
-public class ValidationException extends BaseRuntimeException {
-    public ValidationException() {
+public class ValidationExceptionBase extends RuntimeExceptionBase {
+    public ValidationExceptionBase() {
         super("Data validation failed");
     }
     
-    public ValidationException(String message) {
+    public ValidationExceptionBase(String message) {
         super(message);
     }
     
-    public ValidationException(String message, Throwable cause) {
+    public ValidationExceptionBase(String message, Throwable cause) {
         super(message, cause);
     }
 }

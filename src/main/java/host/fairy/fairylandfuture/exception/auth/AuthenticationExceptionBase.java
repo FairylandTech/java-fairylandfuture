@@ -3,28 +3,28 @@
  * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
- * @datetime: 2025-12-19 02:51:00 UTC+08:00
+ * @datetime: 2025-12-19 02:50:00 UTC+08:00
  ****************************************************/
 package host.fairy.fairylandfuture.exception.auth;
 
-import host.fairy.fairylandfuture.exception.BaseRuntimeException;
+import host.fairy.fairylandfuture.exception.RuntimeExceptionBase;
 
 /**
- * Authorization exception
+ * Authentication exception
  *
  * @author Beau Dean
  * @version 1.0
  */
-public class AuthorizationException extends BaseRuntimeException {
-    public AuthorizationException() {
-        super("Unauthorized");
+public class AuthenticationExceptionBase extends RuntimeExceptionBase {
+    public AuthenticationExceptionBase() {
+        super("Authentication failed");
     }
     
-    public AuthorizationException(String message) {
+    public AuthenticationExceptionBase(String message) {
         super(message);
     }
     
-    public AuthorizationException(String message, Throwable cause) {
+    public AuthenticationExceptionBase(String message, Throwable cause) {
         super(message, cause);
     }
 }

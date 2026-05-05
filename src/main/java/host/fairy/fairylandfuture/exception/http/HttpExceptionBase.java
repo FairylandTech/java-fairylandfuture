@@ -7,7 +7,7 @@
  ****************************************************/
 package host.fairy.fairylandfuture.exception.http;
 
-import host.fairy.fairylandfuture.exception.BaseRuntimeException;
+import host.fairy.fairylandfuture.exception.RuntimeExceptionBase;
 
 /**
  * HTTP related exception
@@ -15,16 +15,16 @@ import host.fairy.fairylandfuture.exception.BaseRuntimeException;
  * @author Beau Dean
  * @version 1.0
  */
-public class HttpException extends BaseRuntimeException {
-    public HttpException() {
+public class HttpExceptionBase extends RuntimeExceptionBase {
+    public HttpExceptionBase() {
         super("HTTP error");
     }
     
-    public HttpException(String message) {
+    public HttpExceptionBase(String message) {
         super(message);
     }
 
-    public HttpException(String message, Throwable cause) {
+    public HttpExceptionBase(String message, Throwable cause) {
         super(message, cause);
     }
 }

@@ -7,7 +7,7 @@
  ****************************************************/
 package host.fairy.fairylandfuture.exception.auth;
 
-import host.fairy.fairylandfuture.exception.BaseRuntimeException;
+import host.fairy.fairylandfuture.exception.RuntimeExceptionBase;
 
 /**
  * Token exception
@@ -15,16 +15,16 @@ import host.fairy.fairylandfuture.exception.BaseRuntimeException;
  * @author Beau Dean
  * @version 1.0
  */
-public class TokenException extends BaseRuntimeException {
-    public TokenException() {
+public class TokenExceptionBase extends RuntimeExceptionBase {
+    public TokenExceptionBase() {
         super("Token error");
     }
     
-    public TokenException(String message) {
+    public TokenExceptionBase(String message) {
         super(message);
     }
     
-    public TokenException(String message, Throwable cause) {
+    public TokenExceptionBase(String message, Throwable cause) {
         super(message, cause);
     }
 }

@@ -7,7 +7,7 @@
  ****************************************************/
 package host.fairy.fairylandfuture.utils.authentication;
 
-import host.fairy.fairylandfuture.exception.common.ParameterException;
+import host.fairy.fairylandfuture.exception.common.ParameterExceptionBase;
 import host.fairy.fairylandfuture.utils.encryption.MD5Utils;
 
 import javax.crypto.SecretKeyFactory;
@@ -57,7 +57,7 @@ public class UserPasswordUtils {
      */
     public static String hashPassword(String password, byte[] salt) {
         if (password == null || password.isEmpty()) {
-            throw new ParameterException("Password cannot be null or empty");
+            throw new ParameterExceptionBase("Password cannot be null or empty");
         }
         
         try {

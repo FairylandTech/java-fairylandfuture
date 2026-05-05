@@ -7,7 +7,7 @@
  ****************************************************/
 package host.fairy.fairylandfuture.utils.encryption;
 
-import host.fairy.fairylandfuture.exception.common.ParameterException;
+import host.fairy.fairylandfuture.exception.common.ParameterExceptionBase;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -23,7 +23,7 @@ public class MD5Utils {
     
     public static String md5HEX(String string) {
         if (string == null || string.isEmpty()) {
-            throw new ParameterException();
+            throw new ParameterExceptionBase();
         }
         
         try {

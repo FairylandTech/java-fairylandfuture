@@ -3,28 +3,28 @@
  * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
- * @datetime: 2025-12-19 03:00:00 UTC+08:00
+ * @datetime: 2025-12-19 03:05:00 UTC+08:00
  ****************************************************/
 package host.fairy.fairylandfuture.exception.common;
 
-import host.fairy.fairylandfuture.exception.BaseRuntimeException;
+import host.fairy.fairylandfuture.exception.RuntimeExceptionBase;
 
 /**
- * Resource not found exception
+ * System exception
  *
  * @author Beau Dean
  * @version 1.0
  */
-public class ResourceNotFoundException extends BaseRuntimeException {
-    public ResourceNotFoundException() {
-        super("Resource not found");
+public class SystemExceptionBase extends RuntimeExceptionBase {
+    public SystemExceptionBase() {
+        super("System error");
     }
     
-    public ResourceNotFoundException(String message) {
+    public SystemExceptionBase(String message) {
         super(message);
     }
     
-    public ResourceNotFoundException(String message, Throwable cause) {
+    public SystemExceptionBase(String message, Throwable cause) {
         super(message, cause);
     }
 }
