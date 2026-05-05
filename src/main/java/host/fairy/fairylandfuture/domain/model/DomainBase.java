@@ -7,7 +7,6 @@
  ****************************************************/
 package host.fairy.fairylandfuture.domain.model;
 
-import host.fairy.fairylandfuture.enums.EnabledEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,12 +23,12 @@ import java.time.LocalDateTime;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DomainBase implements Serializable {
+public class DomainBase<T> implements Serializable {
     private Long id;
     
     private LocalDateTime createdAt;
     
     private LocalDateTime updatedAt;
     
-    private EnabledEnum enabled;
+    private T enabled;
 }

@@ -8,11 +8,7 @@
 package host.fairy.fairylandfuture.domain.model;
 
 import com.baomidou.mybatisplus.annotation.*;
-import host.fairy.fairylandfuture.enums.EnabledEnum;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
@@ -25,19 +21,19 @@ import java.time.LocalDateTime;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class MOBase extends DomainBase {
+public class MOBase extends DomainBase<String> {
     
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
     
-    @TableField(fill = FieldFill.INSERT)
+    @TableField(value = "created_at", fill = FieldFill.INSERT)
     private LocalDateTime createdAt;
     
-    @TableField(fill = FieldFill.INSERT_UPDATE)
+    @TableField(value = "updated_at", fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updatedAt;
     
     @TableLogic
-    private EnabledEnum enabled;
-    
+    private String enabled;
 }

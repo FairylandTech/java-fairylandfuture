@@ -11,10 +11,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import host.fairy.fairylandfuture.enums.EnabledEnum;
 import host.fairy.fairylandfuture.serializer.jackson.EnabledEnumSerializer;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
@@ -27,8 +24,9 @@ import java.time.LocalDateTime;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class ModelBase extends DomainBase {
+public class ModelBase extends DomainBase<EnabledEnum> {
     
     private Long id;
     
