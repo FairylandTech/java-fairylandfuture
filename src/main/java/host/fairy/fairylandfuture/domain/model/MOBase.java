@@ -34,6 +34,6 @@ public class MOBase extends DomainBase<String> {
     @TableField(value = "updated_at", fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updatedAt;
     
-    @TableLogic
+    @TableLogic(value = "Y", delval = "N")
     private String enabled;
 }

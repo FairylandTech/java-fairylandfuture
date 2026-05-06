@@ -5,9 +5,8 @@
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-12-19 18:39:47 UTC+08:00
  ****************************************************/
-package host.fairy.fairylandfuture.common.web.response;
+package host.fairy.fairylandfuture.common.web.result;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,16 +23,24 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class PaginationResponse<E> implements Serializable {
+public class PageResult<E> implements Serializable {
+    private Long page;
     
-    private List<E> data;
-    
-    private Integer page;
-    
-    private Integer size;
+    private Long size;
     
     private Long total;
     
-    private Integer totalPages;
+    private Long pages;
+    
+    private List<E> data;
+    
+    public static <E> PageResult<E> from(Long page, Long size, Long total, Long pages, List<E> data) {
+        return PageResult.<E>builder()
+                .page(page)
+                .size(size)
+                .total(total)
+                .pages(pages)
+                .data(data)
+                .build();
+    }
 }

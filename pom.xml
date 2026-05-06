@@ -6,18 +6,16 @@
 
     <groupId>host.fairy</groupId>
     <artifactId>fairylandfuture</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <lombok.version>1.18.42</lombok.version>
         <jackson.version>2.19.4</jackson.version>
         <slf4j.version>2.0.17</slf4j.version>
-        <logback.version>1.5.21</logback.version>
         <jjwt.version>0.13.0</jjwt.version>
         <junit.version>5.10.2</junit.version>
         <mybatis.version>3.5.19</mybatis.version>
@@ -25,14 +23,13 @@
     </properties>
 
     <dependencies>
-        <!-- Lombok: Tool to reduce boilerplate code like getters and setters -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+            <optional>true</optional>
         </dependency>
 
-        <!-- Jackson Annotations: For JSON property naming and formatting -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
@@ -51,28 +48,18 @@
             <version>${jackson.version}</version>
         </dependency>
 
-        <!-- SLF4J API: Simple Logging Facade for Java -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
 
-        <!-- Logback Classic: Native SLF4J implementation for logging -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-
-        <!-- JJWT API: JSON Web Token support for Java -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
             <version>${jjwt.version}</version>
         </dependency>
 
-        <!-- JJWT Implementation: Required at runtime -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-impl</artifactId>
@@ -80,7 +67,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- JJWT Jackson: Serializer for JWT payloads -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-jackson</artifactId>
@@ -96,29 +82,19 @@
 
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <artifactId>mybatis-plus-annotation</artifactId>
             <version>${mybatisplus.version}</version>
-        </dependency>
-
-        <!-- JUnit Jupiter: Testing framework for unit tests -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Compiler Plugin: Configures Java version and annotation processors -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.14.0</version>
                 <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+                    <release>${maven.compiler.release}</release>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
