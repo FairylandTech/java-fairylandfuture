@@ -7,11 +7,15 @@
  ****************************************************/
 package host.fairy.fairylandfuture.common.web.response;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import host.fairy.fairylandfuture.deserializer.jackson.ResponseCodeEnumDescerializer;
 import host.fairy.fairylandfuture.enums.ResponseCodeEnum;
 import host.fairy.fairylandfuture.serializer.jackson.ResponseCodeEnumSerializer;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -21,9 +25,12 @@ import java.io.Serializable;
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Response<T> implements Serializable {
     
     @JsonSerialize(using = ResponseCodeEnumSerializer.class)
+    @JsonDeserialize(using = ResponseCodeEnumDescerializer.class)
     private ResponseCodeEnum code;
     private String message;
     private T data;
