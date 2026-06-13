@@ -14,6 +14,7 @@ import host.fairy.fairylandfuture.serializer.jackson.EnabledEnumSerializer;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 /**
@@ -31,10 +32,10 @@ public class ModelBase extends DomainBase<EnabledEnum> {
     private Long id;
     
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private LocalDateTime createdAt;
+    private Instant createdAt;
     
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private LocalDateTime updatedAt;
+    private Instant updatedAt;
     
     @JsonSerialize(using = EnabledEnumSerializer.class)
     private EnabledEnum enabled;

@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 /**
@@ -24,16 +25,16 @@ import java.time.LocalDateTime;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class MOBase extends DomainBase<String> {
-    
+
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
-    
+
     @TableField(value = "created_at", fill = FieldFill.INSERT)
-    private LocalDateTime createdAt;
-    
+    private Instant createdAt;
+
     @TableField(value = "updated_at", fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updatedAt;
-    
+    private Instant updatedAt;
+
     @TableLogic(value = "Y", delval = "N")
     private String enabled;
 }
