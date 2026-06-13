@@ -22,6 +22,6 @@ public class EnabledEnumSerializer extends JsonSerializer<EnabledEnum> {
     
     @Override
     public void serialize(EnabledEnum value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        gen.writeString(value.getDescription());
+        gen.writeString(value.getName());
     }
 }

@@ -6,7 +6,7 @@
 
     <groupId>host.fairy</groupId>
     <artifactId>fairylandfuture</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.2.post20260613</version>
     <packaging>jar</packaging>
 
     <properties>

@@ -21,6 +21,6 @@ import java.io.IOException;
 public class GenderEnumSerializer extends JsonSerializer<GenderEnum> {
     @Override
     public void serialize(GenderEnum value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        gen.writeString(value.getDescription());
+        gen.writeString(value.getName());
     }
 }

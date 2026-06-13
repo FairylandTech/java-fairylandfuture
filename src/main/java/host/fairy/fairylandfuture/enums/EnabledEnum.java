@@ -20,34 +20,27 @@ import java.util.Map;
 @Getter
 @AllArgsConstructor
 public enum EnabledEnum {
-    ENABLED(1, "Y", "启用"),
-    DISABLED(0, "N", "禁用");
-    
-    private static final Map<Integer, EnabledEnum> CODE_MAP = new HashMap<>();
+    ENABLED("Y", "启用"),
+    DISABLED("N", "禁用");
+
+    private static final Map<String, EnabledEnum> CODE_MAP = new HashMap<>();
     private static final Map<String, EnabledEnum> NAME_MAP = new HashMap<>();
-    private static final Map<String, EnabledEnum> DESCRIPTION_MAP = new HashMap<>();
-    
+
     static {
         for (EnabledEnum enabledStatus : values()) {
             CODE_MAP.put(enabledStatus.getCode(), enabledStatus);
             NAME_MAP.put(enabledStatus.getName(), enabledStatus);
-            DESCRIPTION_MAP.put(enabledStatus.getDescription(), enabledStatus);
         }
     }
-    
-    private final int code;
+
+    private final String code;
     private final String name;
-    private final String description;
-    
-    public static EnabledEnum fromCode(int code) {
+
+    public static EnabledEnum fromCode(String code) {
         return CODE_MAP.getOrDefault(code, null);
     }
-    
-    public static EnabledEnum fromName(String value) {
-        return NAME_MAP.getOrDefault(value, null);
-    }
-    
-    public static EnabledEnum fromDescription(String description) {
-        return DESCRIPTION_MAP.getOrDefault(description, null);
+
+    public static EnabledEnum fromName(String name) {
+        return NAME_MAP.getOrDefault(name, null);
     }
 }
