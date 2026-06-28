@@ -11,30 +11,48 @@ import com.baomidou.mybatisplus.annotation.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.io.Serializable;
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 /**
  * @author Beau Dean
  * @version 1.0
  */
-@Data
+@Getter
+@Setter
+@ToString
 @SuperBuilder
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
-public class MOBase extends DomainBase<String> {
-
+public abstract class BaseMO implements Serializable {
+    /**
+     * ID
+     */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
-
+    
+    /**
+     * Created time
+     */
     @TableField(value = "created_at", fill = FieldFill.INSERT)
     private Instant createdAt;
-
+    
+    /**
+     * Updated time
+     */
     @TableField(value = "updated_at", fill = FieldFill.INSERT_UPDATE)
     private Instant updatedAt;
-
+    
+    /**
+     * Deleted time
+     */
+    @TableField(value = "deleted_at", fill = FieldFill.DEFAULT)
+    private Instant deletedAt;
+    
+    /**
+     * Enabled flag
+     */
     @TableLogic(value = "Y", delval = "N")
     private String enabled;
 }

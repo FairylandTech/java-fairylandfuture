@@ -12,5 +12,5 @@ package host.fairy.fairylandfuture.enums;
  * @version 1.0
  */
 public enum AuditOperationTypeEnum {
-    QUERY, CREATE, UPDATE, DELETE, LOGIN, LOGOUT, UPLOAD, DOWNLOAD, OTHER
+    SELECT, CREATE, UPDATE, DELETE, LOGIN, LOGOUT, UPLOAD, DOWNLOAD, OTHER
 }

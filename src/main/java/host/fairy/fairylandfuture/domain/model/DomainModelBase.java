@@ -7,36 +7,47 @@
  ****************************************************/
 package host.fairy.fairylandfuture.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import host.fairy.fairylandfuture.enums.EnabledEnum;
-import host.fairy.fairylandfuture.serializer.jackson.EnabledEnumSerializer;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.io.Serializable;
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 /**
  * @author Beau Dean
  * @version 1.0
  */
-@Data
+@Getter
+@Setter(AccessLevel.PROTECTED)
+@ToString
 @SuperBuilder
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
-public class ModelBase extends DomainBase<EnabledEnum> {
-    
+public abstract class DomainModelBase implements Serializable {
+    /**
+     * ID
+     */
     private Long id;
     
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    /**
+     * Created time
+     */
     private Instant createdAt;
     
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    /**
+     * Updated time
+     */
     private Instant updatedAt;
     
-    @JsonSerialize(using = EnabledEnumSerializer.class)
+    /**
+     * Deleted time
+     */
+    private Instant deletedAt;
+    
+    /**
+     * Enabled flag
+     */
     private EnabledEnum enabled;
 }
